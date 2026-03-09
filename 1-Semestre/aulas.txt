@@ -1,0 +1,545 @@
+Aula(12/02/2026):
+    EX: 01
+        1- sg_empresa
+        2- qt_tempo
+        3- qt_media_final
+        4- ic_ativo
+        5- pc_desconto_liquidacao
+        6- nome é para pessoas, descrição para demais coisas
+        7- ds_objeto
+        8- vl_reais
+        9- cd_nota
+        10- sigla é uma abreviação, código é um identificador
+    EX: 02
+        nota_fiscal = 
+        cd_nota_fiscal 
+        + dt_emissao_nota_fiscal 
+        + nm_cliente 
+        + ds_endereco 
+        + cd_cnpj 
+        + cd_inscricao_estadual 
+        + { qt_item 
+        + ds_mercadoria_item 
+        + vl_preco_unitario_item 
+        + vl_preco_total_item } 
+        + vl_total_nota 
+    EX: 03
+        historico_escolar = 
+        nm_aluno 
+        + ds_curso 
+        + cd_matricula 
+        + dt_inicio_curso 
+        + { cd
+        + ds_disciplina 
+        + qt_media 
+        + ic_situacao 
+        + ds_periodo 
+        + qt_carga_horas } 
+        + dt_emissao 
+        + qt_horas_cursadas 
+    EX: 04
+        solicitacao_compra = 
+        dt_solicitacao_compra 
+        + nm_solicitante 
+        + { cd_material_solicitado 
+        + qt_material_solicitado 
+        + vl_preco_unitario_material_solicitado }
+        + ic_confiabilidade_solicitacao_compra 
+    EX: 05
+        relacao_inscritos_excursao = 
+        ds_cidade_destino_ecursao 
+        + cd_tipo_transporte_excursao 
+        + dt_embarque_escursao 
+        + { nm_turista 
+        + qt_idade_turista 
+        + ic_sexo_turista } 
+    EX: 06
+        prontuario_medico = 
+        nm_paciente 
+        + ic_sexo_paciente 
+        + dt_inicio 
+        + dt_fim 
+        + ds_tipo_tratamento 
+        + ds_hospital 
+        + { ds_remedio_prescrito 
+        + dc_remedio_precrito 
+        + qt_dosagem_diaria_remedio_prescrito } 
+    EX: 07
+        ficha_inscricao_candidato = 
+        nm_candidato 
+        + cd_candidato 
+        + ic_candidato 
+        + <nm_pai_candidato 
+        + nm_mae_candidato> 
+Aula(19/02/2026):
+    EX: EXEMPLO
+        notafiscal = 
+        cd_notafiscal -> atributo chave
+        + nm_cliente 
+        + cd_cliente 
+        + ds_endereco 
+        + nm_vendedor 
+        + cd_vendedor 
+        + dt_notafiscal 
+        + { cd_produto -> multivalorado
+        + ds_produto -> multivalorado
+        + sg_unidade_tipo_embalagem_produto  -> multivalorado
+        + qt_produto -> multivalorado
+        + vl_unitario } -> multivalorado
+        + vl_total_notafiscal 
+
+        1FN: 
+            NOTA FISCAL: 
+                cd_notafiscal 
+                nm_cliente 
+                cd_cliente 
+                ds_endereco 
+                nm_vendedor 
+                cd_vendedor 
+                dt_notafiscal 
+                vl_total_notafiscal 
+            ITEM: 
+                cd_notafiscal 
+                cd_produto 
+                ds_produto 
+                sg_unidade_tipo_embalagem_produto 
+                qt_produto 
+                vl_unitario 
+        
+        2FN:
+            NOTA FISCAL:
+                cd_notafiscal 
+                nm_cliente 
+                cd_cliente 
+                ds_endereco 
+                nm_vendedor 
+                cd_vendedor 
+                dt_notafiscal 
+                vl_total_notafiscal 
+            ITEM: 
+                cd_notafiscal 
+                cd_produto 
+                qt_produto 
+                vl_unitario 
+            PRODUTO: 
+                cd_produto 
+                ds_produto 
+                sg_unidade_tipo_embalagem_produto 
+        3FN: 
+            ITEM: 
+                cd_notafiscal 
+                cd_produto 
+                qt_produto 
+                vl_unitario 
+            PRODUTO: 
+                cd_produto 
+                ds_produto 
+                sg_unidade_tipo_embalagem_produto 
+            NOTA FISCAL:
+                cd_notafiscal 
+                dt_notafiscal 
+                cd_cliente 
+                cd_vendedor 
+                vl_total_notafiscal 
+            CLIENTE: 
+                cd_cliente 
+                nm_cliente 
+                ds_endereco 
+            VENDEDOR: 
+                cd_vendedor 
+                nm_vendedor 
+    EX: 01
+        dados_internacao = 
+        + cd_ficha
+        + cd_paciente
+        + nm_paciente
+        + dt_internacao
+        + dt_baixa
+        + cd_quarto
+        + cd_convenio
+        + ds_convenio
+        + cd_medico
+        + nm_medico
+        + cd_setor
+        + ds_setor
+        + { cd_exame
+        + ds_exame }
+
+        1FN:
+            INTERNACAO:
+                cd_ficha --> chave
+                cd_paciente
+                nm_paciente
+                dt_internacao
+                dt_baixa
+                cd_quarto
+                cd_convenio
+                ds_convenio
+                cd_medico
+                nm_medico
+                cd_setor
+                ds_setor
+            INTERNACAO_EXAME:
+                cd_ficha --> chave
+                cd_exame --> chave
+                ds_exame
+        2FN:
+            INTERNACAO:
+                cd_ficha --> chave
+                cd_paciente
+                nm_paciente
+                dt_internacao
+                dt_baixa
+                cd_quarto
+                cd_convenio
+                ds_convenio
+                cd_medico
+                nm_medico
+                cd_setor
+                ds_setor
+            INTERNACAO_EXAME:
+                cd_ficha --> chave
+                cd_exame --> chave
+            EXAME
+                cd_exame --> chave
+                ds_exame
+        3FN:
+            INTERNACAO_EXAME:
+                cd_ficha --> chave
+                cd_exame --> chave
+            EXAME
+                cd_exame --> chave
+                ds_exame
+            INTERNACAO:
+                cd_ficha --> chave
+                cd_paciente --> chave
+                dt_internacao
+                dt_baixa
+                cd_quarto
+                cd_convenio --> chave
+                cd_medico --> chave
+                cd_setor --> chave
+            PACIENTE:
+                cd_paciente --> chave
+                nm_paciente
+            CONVENIO
+                cd_convenio --> chave
+                ds_convenio
+            MEDICO:
+                cd_medico --> chave
+                nm_medico
+            SETOR:
+                cd_setor --> chave
+                ds_setor
+Aula(26/02/2026):
+    EX: 02:
+        ficha_prestacao_servico = 
+        cd_cartao
+        + dt_prestacao_servico 
+        + cd_os 
+        + cd_tecnico 
+        + nm_tecnico 
+        + nm_op1 
+        + nm_op2 
+        + hr_inicial 
+        + hr_final 
+        + qt_duracao_servico 
+        + cd_centro_custo 
+        + ds_centro_custo 
+        + cd_solicitante 
+        + nm_solicitante 
+        + { cd_servico 
+        + ds_servico 
+        + qt_servico 
+        + vl_servico 
+        + cd_material 
+        + ds_material 
+        + qt_material }
+        + vl_total 
+
+        1FN:
+            CARTAO:
+                cd_cartao --> chave
+                dt_prestacao_servico
+                cd_os
+                cd_tecnico
+                nm_tecnico
+                nm_op1
+                nm_op2
+                hr_inicial
+                hr_final
+                qt_duracao_servico
+                cd_centro_custo
+                ds_centro_custo
+                cd_solicitante
+                nm_solicitante
+                vl_total
+            CARTAO_SERVICO:
+                cd_cartao --> chave
+                cd_servico --> chave
+                ds_servico
+                qt_servico
+                vl_servico
+                cd_material
+                ds_material
+                qt_material
+        2FN:
+            CARTAO:
+                cd_cartao --> chave
+                dt_prestacao_servico
+                cd_os
+                cd_tecnico
+                nm_tecnico
+                nm_op1
+                nm_op2
+                hr_inicial
+                hr_final
+                qt_duracao_servico
+                cd_centro_custo
+                ds_centro_custo
+                cd_solicitante
+                nm_solicitante
+                vl_total
+            CARTAO_SERVICO:
+                cd_cartao --> chave
+                cd_servico --> chave
+                cd_material --> chave
+            SERVICO:
+                cd_servico --> chave
+                ds_servico
+                qt_servico
+                vl_servico
+            MATERIAL:
+                cd_material --> chave
+                ds_material
+                qt_material
+        3FN:
+            CARTAO_SERVICO:
+                cd_cartao --> chave
+                cd_servico --> chave
+                cd_material --> chave
+            SERVICO:
+                cd_servico --> chave
+                ds_servico
+                qt_servico
+                vl_servico
+            MATERIAL:
+                cd_material --> chave
+                ds_material
+                qt_material
+            CARTAO:
+                cd_cartao --> chave
+                dt_prestacao_servico
+                cd_os
+                cd_tecnico --> chave
+                nm_op1
+                nm_op2
+                hr_inicial
+                hr_final
+                qt_duracao_servico
+                cd_centro_custo --> chave
+                cd_solicitante --> chave
+                vl_total
+            TECNICO:
+                cd_tecnico --> chave
+                nm_tecnico
+            CENTRO_CUSTO:
+                cd_centro_custo --> chave
+                ds_centro_custo
+            SOLICITATE:
+                cd_solicitante --> chave
+                nm_solicitante
+    PARA FAZER:
+    EX: 01: ATENDIMENTO SERVICE DESK. Dados os atributos, normalizar até a 3FN.
+        ABERTURA_DE_CHAMADO = 
+        cd_chamado 
+        + dt_chamado 
+        + ds_chamado 
+        + cd_funcionario 
+        + nm_funcionario 
+        + cd_atendimento 
+        + ds_atendimento 
+        + { cd_analista 
+        + nm_analista 
+        + cd_log_atendimento 
+        + ds_log_atendimento } 
+
+        1FN:
+            SERVICO:
+                cd_chamado --> chave
+                dt_chamado
+                ds_chamado
+                cd_funcionario
+                nm_funcionario
+                cd_atendimento
+                ds_atendimento
+            DADOS:
+                cd_chamado --> chave
+                cd_analista
+                nm_analista
+                cd_log_atendimento
+                ds_log_atendimento
+        2FN:
+            SERVICO:
+                cd_chamado --> chave
+                dt_chamado
+                ds_chamado
+                cd_funcionario
+                nm_funcionario
+                cd_atendimento
+                ds_atendimento
+            DADOS:
+                cd_chamado --> chave
+                cd_analista --> chave
+                cd_log_atendimento --> chave
+            ANALISTA:
+                cd_analista --> chave
+                nm_analista
+            LOG_ATENDIMENTO:
+                cd_log_atendimento --> chave
+                ds_log_atendimento
+        3FN:
+            DADOS:
+                cd_chamado --> chave
+                cd_analista --> chave
+                cd_log_atendimento --> chave
+            ANALISTA:
+                cd_analista --> chave
+                nm_analista
+            LOG_ATENDIMENTO:
+                cd_log_atendimento --> chave
+                ds_log_atendimento
+            SERVICO:
+                cd_chamado --> chave
+                dt_chamado
+                ds_chamado
+                cd_funcionario --> chave
+                nm_funcionario
+                cd_atendimento --> chave
+                ds_atendimento
+            FUNCIONARIO:
+                cd_funcionario --> chave
+                nm_funcionario
+            ATENDIMENTO:
+                cd_atendimento --> chave
+                ds_atendimento
+    EX: 02: PROJETOS. Com base na tabela abaixo, normalizar os atributos apresentados até a 3 FN:
+        PROJETOS = 
+        + cd_projeto 
+        + ds_projeto 
+        + { cd_funcionario 
+        + nm_funcionario 
+        + cd_sal 
+        + sg_cota 
+        + dt_inicio_proj_func } 
+
+        1FN:
+            PROJETO:
+                cd_projeto
+                ds_projeto
+            ITEM:
+                cd_funcionario
+                nm_funcionario
+                cd_sal
+                sg_cota
+                dt_inicio_proj_func
+        2FN:
+            PROJETO:
+                cd_projeto --> chave
+                ds_projeto
+            ITEM:
+                cd_projeto --> chave
+                cd_funcionario --> chave
+                cd_sal --> chave
+                dt_inicio_proj_func
+            FUNCIONARIO:
+                cd_funcionario --> chave
+                nm_funcionario
+            SALARIO:
+                cd_sal --> chave
+                sg_cota
+        3FN:
+            ITEM:
+                cd_projeto --> chave
+                cd_funcionario --> chave
+                cd_sal --> chave
+                dt_inicio_proj_func
+            FUNCIONARIO:
+                cd_funcionario --> chave
+                nm_funcionario
+            SALARIO:
+                cd_sal --> chave
+                sg_cota
+            PROJETO:
+                cd_projeto --> chave
+                ds_projeto
+    EX: 03: LOCAÇÃO DE FITAS. Normalizar até a 3FN.
+        dados_locadora = 
+        cd_locacao 
+        + nm_cliente 
+        + dt_locacao 
+        + nm_autorizado 
+        + { cd_fita 
+        + ds_tipo_fita 
+        + dt_dev_prev_fita 
+        + dt_dev_fita 
+        + vl_multa 
+        + vl_fita }
+        + vl_subtotal 
+        + vl_total 
+
+        1FN:
+            LOCACAO:
+                cd_locacao --> chave
+                nm_cliente
+                dt_locacao
+                nm_autorizado
+                vl_subtotal
+                vl_total
+            LOCACAO_FITA:
+                cd_locacao --> chave
+                cd_fita
+                ds_tipo_fita
+                dt_dev_prev_fita
+                dt_dev_fita
+                vl_multa
+                vl_fita
+        2FN:
+            LOCACAO:
+                cd_locacao --> chave
+                nm_cliente
+                dt_locacao
+                nm_autorizado
+                vl_subtotal
+                vl_total
+            LOCACAO_FITA:
+                cd_locacao --> chave
+                cd_fita --> chave
+                dt_dev_prev_fita
+                dt_dev_fita
+                vl_multa
+                vl_fita
+            FITA:
+                cd_fita --> chave
+                ds_tipo_fita
+        3FN:
+            LOCACAO_FITA:
+                cd_fita --> chave
+                dt_dev_prev_fita
+                dt_dev_fita
+                vl_multa
+                vl_fita
+            FITA:
+                cd_fita --> chave
+                ds_tipo_fita
+            LOCACAO:
+                cd_locacao
+                cd_cliente --> chave
+                dt_locacao
+                vl_subtotal
+                vl_total
+            CLIENTE:
+                cd_cliente --> chave
+                nm_cliente
+                nm_autorizado
+Aula(05/02/2026):
