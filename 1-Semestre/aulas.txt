@@ -542,4 +542,60 @@ Aula(26/02/2026):
                 cd_cliente --> chave
                 nm_cliente
                 nm_autorizado
-Aula(05/02/2026):
+Aula(12/03/2026):
+    Utilização do Xampp e MySQL Workbench para manipular o banco de dados
+    Comandos SQL:
+        SHOW DATABASES; --> lista todos os bancos de dados que existem no sistema
+        CREATE DATABASE 'banco'; --> cria um banco de dados
+        DROP DATABASE 'banco'; --> tirar alguma coisa do banco, remove da existencia
+        CREATE SCHEMA 'banco'; --> cria uma database do mesmo jeito
+        DROP SCHEMA 'banco'; --> dropa do mesmo jeito
+        USE 'banco' --> deixa o banco em uso para mexer nele
+        CREATE TABLE 'tabela' --> cria uma tabela no banco usado
+    Tipos de comandos:
+        DDL: Data Definition Language
+            CREATE
+            DROP
+            ALTER
+            TRUNCATE
+            COMMENT
+        DQL: Data Query Language
+            SELECT
+        DML: Data Manipulation Language
+            INSERT
+            UPDATE
+            DELETE
+        DFL: Data Transaction Language
+            BEGIN TRANSACTION
+            COMMIT
+            ROLLBACK
+    Tipos de dados:
+        Tipos Numéricos:
+            bit ou bool/boolean --> ocupa 1 byte de memoria
+            tinyint --> ocupa 1 byte de memoria, aceita valores de -128 até 127
+            smallint --> ocupa 2 bytes de memoria, aceita valores de -32.768 até 32.767
+            mediumint --> ocupa 3 bytes de memoria, aceita valores de -8.388.608 até 8.388.607
+            integer/int --> ocupa 4 bytes de memoria, aceita valores de -2.147.483.648 até 2.147.483.647
+            bigint --> ocupa 8 bytes de memoria, aceita valores de -9.223.372.036.854.775.808 até 9.223.372.036.854.775.807
+            float --> ocupa 4 bytes de memoria, aceita no máximo até 6 casas decimais depois da vírgula(123.456), caso não seja especificado dentro do (), ou seja posso passar apenas um parametro, exemplo (3) fica 123
+            double --> ocupa 8 bytes de memoria, aceita no máximo até 24 casas decimais depois da vírgula, caso não especificado dentro do (), ou seja posso passar dois parametros, exemplo: (6,2) fica 1234.56 -> 6 casas com dois pontos flutuantes
+            decimal --> ocupa o primeiro valor do parametro mais 2 bytes de memoria, sem parametro utiliza precisao máxima, ou seja posso usar dois parametros, exemplo: (7,2) fica 12345.67 -> 7 cassas com dois pontos flutuantes
+        Cadeia de Caracteres:
+            char --> ocupa quantidade de caracteres vezes 1 byte de memória, sózinho(sem especificar) ele ocupa o máximo, utilizar quando tem certeza da quantidade de caracteres, tem um parametro sendo ele o tamanho, exemplo: (11) fica 11 caracteres
+            varchar(n) --> ocupa n + 1 byte de memória, o que colocar no n mostra o máximo que ele pode ocupar, exemplo: (65) fica 65 caracteres e 66 bytes
+            tinytext --> ocupa o espaço máximo de memória caso sozinho, é sempre o tamanho + 1 byte e é limitado até 256 caracteres
+            text --> ocupa o espaço máximo de memória caso sozinho, é sempre o tamanho + 1 byte e é limitado até até 65.535 caracteres, aceita caracteres do tipo UTF
+            mediumtext --> ocupa o espaço máximo de memória caso sozinho, é sempre o tamanho + 1 byte e é limitado até até 16.777.215 caracteres, aceita caracteres do tipo UTF
+            enum --> suporta lista de até 64 itens, utilizado para armazenar lista de valores
+            set --> suporta lista de até 65 mil itens, utilizado para armazenar lista de valores
+        Datas:
+            date --> armazena uma data considerando 01/01/0001 até 31/12/9999, ocupa 3 bytes de memória
+            datetime --> dia, mes, ano e hora com minutos e segundos considerando 01/01/0001 até 31/12/9999, ocupa 8 bytes de memória 
+            timestamp --> dia, mes, ano e hora com minutos e segundos considerando 01/01/1970 até 19/01/2038, ocupa 4 bytes de memória 
+            time --> ocupa 3 bytes de memória, aceita horas minutos e segundos
+            year --> ocupa 1 byte de memória, pode passar parametros, sendo o padrao de 4 digitos, podemos passar de 2 ou 4 no parametros para digitos, armazena de 1901 até 2155
+        Tipos Blob:
+            tinyblob --> ocupa 8 bits
+            blob --> ocupa 16 bits
+            mediumblob --> ocupa 24 bits
+            longblob --> ocupa 32 bits
