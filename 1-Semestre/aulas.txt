@@ -599,3 +599,18 @@ Aula(12/03/2026):
             blob --> ocupa 16 bits
             mediumblob --> ocupa 24 bits
             longblob --> ocupa 32 bits
+AUla(19/03/2026):
+    constraints:
+        NOT NULL --> não deixa passar sem a informação
+        NULL --> deixa passar sem a informação, é o padrão
+        DEFAULT --> cria dentro da coluna a informação colocada
+        UNIQUE --> é um campo unico
+        CHECK --> checagem dentro do () que for definido
+        PRIMARY KEY --> chave primária
+        AUTO_INCREMENT --> não precisa mais rodar o campo em si, pois ele vai se incrementando a cada vez que o código rodar
+            é um contador interno, logo se deletar o luiz 3 e criar a kamila ela vai ser 4 e não 3, ficando com uma lacuna 
+        SERIAL DEFAULT VALUE--> PRIMARY KEY + DEFAULT + NOT NULL
+        FOREIGN KEY(coluna da tabela estrangeira) --> chave estrangeira
+        REFERENCES(tabela) --> refencia que fa com a tabela selecionada
+    para criar uma constraint com nome: CONSTRAINT 'nome' 'constraint para usar' ('tabela')
+    quando tiver tabela que depende de outra, sempre criar primeiro a que não depende de alguma e vai nesse sentido
