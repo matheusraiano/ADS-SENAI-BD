@@ -611,6 +611,22 @@ AUla(19/03/2026):
             é um contador interno, logo se deletar o luiz 3 e criar a kamila ela vai ser 4 e não 3, ficando com uma lacuna 
         SERIAL DEFAULT VALUE--> PRIMARY KEY + DEFAULT + NOT NULL
         FOREIGN KEY(coluna da tabela estrangeira) --> chave estrangeira
-        REFERENCES(tabela) --> refencia que fa com a tabela selecionada
+            REFERENCES(tabela) --> refencia que fa com a tabela selecionada
     para criar uma constraint com nome: CONSTRAINT 'nome' 'constraint para usar' ('tabela')
     quando tiver tabela que depende de outra, sempre criar primeiro a que não depende de alguma e vai nesse sentido
+Aula(26/03/2026):
+    comandos:
+        ALTER TABLE "table" ADD "coluna a criar" "tipos, ex: int..." --> adicionar uma coluna nova na tabela
+        ALTER TABLE "table" MODIFY COLUMN "coluna selecionada" "dados a colocar, sempre colocar o tipo que não vai mudar" --> adiciona coisas na coluna que existente
+        ALTER TABLE "table" ADD PRIMARY KEY("coluna") --> adiciona chave primaria
+        ALTER TABLE "table" ADD FOREIGN KEY("coluna") REFERENCES "tabela"("coluna") --> adicionar chave estrangeira
+        ALTER TABLE "table" DROP "coluna" --> deleta a coluna
+        ALTER TABLE "table" DROP CONSTRAINT "nome da constraint";
+Aula(02/04/2026):
+    comando:
+        INSERT INTO "nome da tabela" "colunas separadas por ," VALUES "valores das respectivas colunas separados por ,"
+            - forma declarativa: declaramos as colunas na ordem que quisermos
+        INSERT INTO "nome da tabela" VALUES"valores das colunas na ordem da tabela separados por ,";
+            - forma posicional: não declaramos colunas, portanto enviamos os dados na ordem que foram criados
+        UPDATE "nome da tabela" SET "nome da coluna" = "novo valor" WHERE(filtro/condição) "nome de uma coluna, exemplo: primária, exemplo: 'id_cliente'" = "valor inserido dela, exemplo: '3'"
+        DELETE FROM "nome da tabela" WHERE(filtro/condição) "nome de uma coluna, exemplo: primária, exemplo: 'id_cliente'" = "valor inserido dela, exemplo: '3'"
