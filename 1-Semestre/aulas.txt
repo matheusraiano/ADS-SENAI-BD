@@ -630,3 +630,26 @@ Aula(02/04/2026):
             - forma posicional: não declaramos colunas, portanto enviamos os dados na ordem que foram criados
         UPDATE "nome da tabela" SET "nome da coluna" = "novo valor" WHERE(filtro/condição) "nome de uma coluna, exemplo: primária, exemplo: 'id_cliente'" = "valor inserido dela, exemplo: '3'"
         DELETE FROM "nome da tabela" WHERE(filtro/condição) "nome de uma coluna, exemplo: primária, exemplo: 'id_cliente'" = "valor inserido dela, exemplo: '3'"
+Aula(09/04/2026):
+    tabela da verdade DO AND (E):
+        V AND V = V
+        V AND F = F
+        F AND V = F
+        F AND F = F
+    tabela da verdade DO OR (OU):
+        V OR V = V
+        V OR F = V
+        F OR V = V
+        F OR F = F
+    comando:
+        SELECT (coluna) FROM (tabela)
+        SELECT (coluna) FROM (tabela) WHERE (filtro de onde ir)
+        SELECT (coluna) AS ('nome novo da colula') FROM (tabela)
+        SELECT (coluna) FROM (tabela) LIMIT (limite de até onde ele vai mostrar)
+        SELECT (colula) FROM (tabela) ORDER BY (culona para ser onde se ordena)
+        SELECT (colula) FROM (tabela) ORDER BY (culona para ser onde se ordena) DESC(coloca em ordem decrescente)
+        SELECT (colula) FROM (tabela) ORDER BY (culona para ser onde se ordena) ASC(coloca em ordem ascendente)
+        SELECT DISTINCT(mostra os diferentes sem repetir) (colula) FROM (tabela) ORDER BY (culona para ser onde se ordena)
+        SELECT (colula) FROM (tabela) WHERE (colula) LIKE ('palavra%') --> depois de % o like entende que pode ser qualquer coisa depois da palavra escrita
+        SELECT (colula) FROM (tabela) WHERE (colula) IN(('palavra'))
+        SELECT (coluna) FROM (tabela) WHERE (coluna) IS NULL(mostra onde é nulo);

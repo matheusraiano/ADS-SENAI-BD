@@ -99,11 +99,11 @@ CREATE TABLE habilidades
 );
 
 insert into usuarios values
-(1, 'um@gmail.com', 123),
-(2, 'dois@gmail.com', 1234),
-(3, 'tres@gmail.com', 12345),
-(4, 'quatro@gmail.com', 123456),
-(5, 'cinco@gmail.com', 1234567);
+(1, 'um@gmail.com', '123'),
+(2, 'dois@gmail.com', '1234'),
+(3, 'tres@gmail.com', '12345'),
+(4, 'quatro@gmail.com', '123456'),
+(5, 'cinco@gmail.com', '1234567');
 
 insert into personagens values
 (1, 'um', 1, 1),
@@ -134,11 +134,11 @@ insert into habilidades values
 (5, 'cincooo');
 
 insert into usuarios(email, senha) values
-('um@gmail.com', 123),
-('dois@gmail.com', 1234),
-('tres@gmail.com', 12345),
-('quatro@gmail.com', 123456),
-('cinco@gmail.com', 1234567);
+('um@gmail.com', '123'),
+('dois@gmail.com', '1234'),
+('tres@gmail.com', '12345'),
+('quatro@gmail.com', '123456'),
+('cinco@gmail.com', '1234567');
 
 insert into personagens(nome, fk_id_usuario, fk_id_classe) values
 ('um', 1, 1),
