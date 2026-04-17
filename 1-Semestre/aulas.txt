@@ -653,3 +653,5 @@ Aula(09/04/2026):
         SELECT (colula) FROM (tabela) WHERE (colula) LIKE ('palavra%') --> depois de % o like entende que pode ser qualquer coisa depois da palavra escrita
         SELECT (colula) FROM (tabela) WHERE (colula) IN(('palavra'))
         SELECT (coluna) FROM (tabela) WHERE (coluna) IS NULL(mostra onde é nulo);
+Aula(16/04/2026):
+    select current_date() --> mostra a data atual do sistema
