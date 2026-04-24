@@ -117,7 +117,18 @@ select * from employees where email not like 'j%';
 -- 59
 select * from employees where FIRST_NAME like '%an%' and salary > 2000 and salary < 6000 order by FIRST_NAME;
 -- 60
-select * from employees where DEPARTMENT_ID = 10 and DEPARTMENT_ID = 20 and DEPARTMENT_ID = 30 order by DEPARTMENT_ID;
-
-
-select * from departments;
+select * from employees where DEPARTMENT_ID in (10,20,30);
+-- 61
+select * from employees where department_id not in (60,80);
+-- 62
+select * from employees where manager_id is null order by salary;
+-- 63
+select * from employees where commission_pct is not null and department_id <> 80;
+-- 64
+select * from employees where salary > 4000 and department_id in (50,60,100);
+-- 65
+select concat(first_name, ' ', last_name) as 'funcionario', salary as 'salario', departament_id as 'departamento' from employees where salary > 5000 and department_id <> 80 order by salary desc;
+-- 66
+insert into departments values (300, 'inovação', 100, 1700);
+-- 67
+insert into jobs values ('DEV_JR', '');

@@ -655,3 +655,5 @@ Aula(09/04/2026):
         SELECT (coluna) FROM (tabela) WHERE (coluna) IS NULL(mostra onde é nulo);
 Aula(16/04/2026):
     select current_date() --> mostra a data atual do sistema
+Aula(23/04/02026):
+    
