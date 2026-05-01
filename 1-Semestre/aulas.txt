@@ -655,5 +655,20 @@ Aula(09/04/2026):
         SELECT (coluna) FROM (tabela) WHERE (coluna) IS NULL(mostra onde é nulo);
 Aula(16/04/2026):
     select current_date() --> mostra a data atual do sistema
-Aula(23/04/02026):
-    
+Aula(30/04/02026):
+    comandos:
+        UNION --> justa selects, fazendo isso pode-se tirar os nulos quando executa um select com varias colunas e retira os repetidos. Caso eu queira que não retire só usar union all
+            SELECT 'cliente', clienteId from tb_endereco
+            UNION
+            SELECT 'funcionario', funcionarioId from tb_endereco
+            UNION
+            SELECT 'fornecedor', fornecedorId from tb_endereco;
+        INNER JOIN --> entra em outra tabela dentro de um select de outra tabela. Tabela que vai no from é a tabela da esquerda, a que vai depois é a da direita!!! o inner mostra o que faz referência com o que tem na da esquerda e da direita
+            SELECT c.descricao 'categoria', p.descricao 'produto', p.preco - (p.preco * 0.02) 'c/ desconto' 
+            FROM tb_produto p
+            INNER JOIN tb_categoria c
+            ON p.categoriaId = c.categoriaId
+            WHERE c.descricao = 'Bebidas'
+        LEFT JOIN --> ele mostra tudo da tabela da esqurda + o que tem de relacional entre as tabelas e da direta apenas o que está relacionado
+        RIGHT JOIN --> ele mostra tudo da tabela da direita + o que tem de relacional entre as tabelas e da esquerda apenas o que está relacionado
+        FULL JOIN --> mostra tudo que está relacionao ou não
