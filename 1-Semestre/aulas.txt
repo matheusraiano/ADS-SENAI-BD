@@ -672,3 +672,14 @@ Aula(30/04/02026):
         LEFT JOIN --> ele mostra tudo da tabela da esqurda + o que tem de relacional entre as tabelas e da direta apenas o que está relacionado
         RIGHT JOIN --> ele mostra tudo da tabela da direita + o que tem de relacional entre as tabelas e da esquerda apenas o que está relacionado
         FULL JOIN --> mostra tudo que está relacionao ou não
+Aula(07/05/2026):
+    comandos: 
+        GROUP BY --> feito para se agrupar algo
+        HAVING --> é um where de grupos, o where ele filtra linhas apenas e o having filtra grupos
+        CREATE TEMPORARY TABLE 'tabela' --> cria uma tabela temporária que dura até você fechar e abrir o software
+        Comando para criar cases, onde cria uma coluna nova com uma resposta(then) para quando o when foi atingido:
+            CASE
+                WHEN SUM(preco * quantidade) >= 1500 THEN 'Meta Atingida'
+                WHEN SUM(preco * quantidade) >= 1000 AND SUM(preco * quantidade) < 1500 THEN 'Meta Aceitável'
+                ELSE 'Meta Não Foi Atingida'
+            END AS 'Metas' --> final da coluna

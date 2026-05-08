@@ -98,3 +98,6 @@ join tb_produto pr on d.produtoid = pr.produtoid
 where p.datapedido >= '1996-07-01' and p.datapedido <= '1996-07-31'
 group by pr.descricao
 order by SUM(d.quantidade) desc limit 1;
+
+-- QUAL CLIENTE TEVE O MAIOR GASTO NO MÊS 7 DE 1996
+
