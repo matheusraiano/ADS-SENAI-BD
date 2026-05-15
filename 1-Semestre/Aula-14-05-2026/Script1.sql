@@ -182,9 +182,9 @@ create function eh_maior_idade(dataNascimento date)
 returns varchar(255) deterministic
 begin
 	declare resultado varchar(255);
-    if timestampdiff(year, DATA_NASCIMENTO, curdate()) >= 18 then
+    if timestampdiff(year, dataNascimento, curdate()) >= 18 then
 		set resultado = 'maior de idade';
-    elseif timestampdiff(year, DATA_NASCIMENTO, curdate()) < 18 then
+    elseif timestampdiff(year, dataNascimento, curdate()) < 18 then
 		set resultado = 'menor de idade';
     end if;
     return resultado;
