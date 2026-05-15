@@ -683,3 +683,15 @@ Aula(07/05/2026):
                 WHEN SUM(preco * quantidade) >= 1000 AND SUM(preco * quantidade) < 1500 THEN 'Meta Aceitável'
                 ELSE 'Meta Não Foi Atingida'
             END AS 'Metas' --> final da coluna
+Aula(14/05/2026):
+    comandos:
+        AVG() --> calcula a média da coluna colocada dentro de ()
+        EXISTS() --> depois de where mostra quais tem na tabela dentro do () que existe na outra
+        Transação:
+            START TRANSACTION; --> começa a transação 
+            BEGIN; --> serve para começar a clocar os comandos
+            update tb_cliente 
+            set nomeCompleto = 'AlteradoTurmaB' 
+            where clienteid = 'BBBBB'; --> comando colocado, poderia colocar mais
+            ROLLBACK; --> volta tudo que foi alterado, CASO NAO TENHA SIDO DADO UM COMMIT
+            COMMIT; --> coloca as alterações definitivamente no banco, não volta
