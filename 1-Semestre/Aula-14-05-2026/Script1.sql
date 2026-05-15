@@ -175,3 +175,19 @@ begin
 end //
 
 select faturamento_numero_pedido(10250);
+
+-- função que ao receber uma daa de nascimento, retorna se a pessoa é menor ou maior de idade
+delimiter //
+create function eh_maior_idade(dataNascimento date)
+returns varchar(255) deterministic
+begin
+	declare resultado varchar(255);
+    if timestampdiff(year, DATA_NASCIMENTO, curdate()) >= 18 then
+		set resultado = 'maior de idade';
+    elseif timestampdiff(year, DATA_NASCIMENTO, curdate()) < 18 then
+		set resultado = 'menor de idade';
+    end if;
+    return resultado;
+end //
+
+select eh_maior_idade('2020-02-18');
